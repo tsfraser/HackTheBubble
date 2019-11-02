@@ -10,15 +10,11 @@ import pandas
 # Warnings
 import warnings
 
-print("SciServer libraries imported")
-print('Supporting libraries imported')
-
-# Apply some special settings to the imported libraries
-
-# Ensure columns get written completely
-pandas.set_option('display.max_colwidth', -1)
 # Don't show python warnings
 warnings.filterwarnings('ignore')
+
+print("SciServer library imported")
+print('Supporting libraries imported')
 
 print('Settings applied')
 
