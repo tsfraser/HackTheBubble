@@ -1,25 +1,12 @@
-# Code for splitting the database into two sets: training data,
-# and data to be analysed.
-
-# Import Python libraries to work with SciServer
+# Import Python library to work with SciServer
 
 # Query with CasJobs
 import SciServer.CasJobs as CasJobs
-# R/W to/from SciDrive
-import SciServer.SciDrive as SciDrive
 
 # Import other libraries
 
-# Standard Python library for math operations
-import numpy as np
-# Save images as files
-from scipy.misc import imsave
 # Data manipulation
 import pandas
-# Graphing
-import matplotlib.pyplot as plt
-# Managing local files
-import os
 # Warnings
 import warnings
 
