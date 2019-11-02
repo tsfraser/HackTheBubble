@@ -37,12 +37,8 @@ q = CasJobs.executeQuery(query, "dr14")
 
 # Check data and drop any row that has NaN.
 q.dropna()
-# Check all types in columns and make floats all the same precision.
+# Check that all types in columns are as expected.
 q.info()
-
-for index, row in q.iterrows():
-    format(row['u'], '.5f')
-#format(q, '.2f')
 
 # Write to file.
 q.to_csv("result.csv")
