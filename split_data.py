@@ -39,7 +39,10 @@ q = CasJobs.executeQuery(query, "dr14")
 q.dropna()
 # Check all types in columns and make floats all the same precision.
 q.info()
-format(q, '.2f')
+
+for ind in q.index:
+    format(q.['u'][ind], '.2f')
+#format(q, '.2f')
 
 # Write to file.
 q.to_csv("result.csv")
