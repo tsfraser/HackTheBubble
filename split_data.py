@@ -36,8 +36,10 @@ ORDER BY g.specObjID
 q = CasJobs.executeQuery(query, "dr14")
 
 # Check data and drop any row that has NaN.
-
+q.dropna()
 # Check all types in columns and make floats all the same precision.
+q.info()
+format(q, '.2f')
 
 # Write to file.
 q.to_csv("result.csv")
