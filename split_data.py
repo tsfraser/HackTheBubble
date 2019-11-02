@@ -32,11 +32,14 @@ ORDER BY g.specObjID
 """
 
 # Then, query the database. The answer is a table that is
-# being returned as a csv.
-q2 = CasJobs.executeQuery(query, "dr14", format="csv")
+# being returned as a dataframe.
+q = CasJobs.executeQuery(query, "dr14")
 
-f = open("result.txt", "w")
-f.write(q2)
-f.close()
+# Check data and drop any row that has NaN.
+
+# Check all types in columns and make floats all the same precision.
+
+# Write to file.
+q.to_csv("result.csv")
 
 print("SQL query finished.")
