@@ -40,8 +40,8 @@ q.dropna()
 # Check all types in columns and make floats all the same precision.
 q.info()
 
-for ind in q.index:
-    q = format(q['u'][ind], '.5f')
+for index, row in q.iterrows():
+    format(row['u'], '.5f')
 #format(q, '.2f')
 
 # Write to file.
