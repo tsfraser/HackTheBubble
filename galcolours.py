@@ -31,9 +31,10 @@ r = x['r']
 ug = u-g
 gr = g
 
-Xd = {'u-g': ug, 'g-r' : g }
+Xd = {'u-g': ug, 'g' : g }
 X = pd.DataFrame(data= Xd)
 
+X =X[X['u-g'].between(-27, 30)]
 
 
 x_data = X.to_numpy()
@@ -80,14 +81,14 @@ x_test,y_test = x_data[20000:40000], y_data[20000:40000]
 from sklearn.cluster import  KMeans
 from sklearn.metrics.pairwise import pairwise_distances_argmin
 from sklearn.datasets.samples_generator import make_blobs
-
+X = X.to_numpy()
 
 #X = x_train
-k_means = KMeans(init='k-means++',n_clusters=3, random_state=0).fit(X)
+k_means = KMeans(init='k-means++',n_clusters=4, random_state=0).fit(X)
 
 
 
-n_clusters = 2
+n_clusters = 4
 fig = plt.figure(figsize=(8, 3))
 fig.subplots_adjust(left=0.02, right=0.98, bottom=0.05, top=0.9)
 colors = ['#4EACC5', '#FF9C34', '#4E9A06']
@@ -102,12 +103,13 @@ k_means_labels = pairwise_distances_argmin(X, k_means_cluster_centers)
 
 # KMeans
 ax = fig.add_subplot(1, 3, 1)
-for k, col in zip(range(n_clusters), colors):
+for k, col in zip(range(1,n_clusters), colors):
     my_members = k_means_labels == k
     cluster_center = k_means_cluster_centers[k]
-    ax.plot(X[my_members, 0], X[my_members, 1], 'w',
-            markerfacecolor=col, marker='.')
-    ax.plot(cluster_center[0], cluster_center[1], 'o', markerfacecolor=col,
+    print(k)
+    ax.scatter(X[my_members,0], X[my_members,1], marker='.')
+    print(X[my_members,1])
+    ax.plot(cluster_center[0], cluster_center[1], markerfacecolor=col,
             markeredgecolor='k', markersize=6)
 ax.set_title('KMeans')
 ax.set_xticks(())
