@@ -41,7 +41,7 @@ q.dropna()
 q.info()
 
 for ind in q.index:
-    format(q.['u'][ind], '.2f')
+    q = format(q['u'][ind], '.5f')
 #format(q, '.2f')
 
 # Write to file.
